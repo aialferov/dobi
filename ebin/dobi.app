@@ -9,14 +9,6 @@
 	{id, "dobi"},
 	{vsn, "0.0.1"},
 	{description, "Document builder"},
-	{modules, [
-		dobi,
-		dobi_app,
-		dobi_sup,
-		dobi_core,
-		dobi_server
-	]},
-	{registered, [dobi_server]},
-	{applications, [kernel, stdlib, sasl, utils]},
-	{mod, {dobi_app, []}}
+	{modules, [dobi]},
+	{applications, [kernel, stdlib]}
 ]}.
