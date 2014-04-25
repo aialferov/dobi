@@ -25,9 +25,7 @@ build(Parts, Vars) -> lists:foldl(fun(Part, Document) ->
 	end
 end, [], Parts).
 
-build_parts(ConfigFile, ContentDir) ->
-	{ok, Config} = file:consult(ConfigFile),
-	split_parts(build_joint(Config, ContentDir)).
+build_parts(Config, ContentDir) -> split_parts(build_joint(Config, ContentDir)).
 
 build_joint(Config, ContentDir) -> lists:foldl(fun
 	({ContentFile, Vars}, Document) ->

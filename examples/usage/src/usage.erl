@@ -3,14 +3,12 @@
 -export([run/0]).
 -export([greeting/0]).
 
--define(ConfigDir, "priv/conf").
 -define(ContentDir, "priv/html").
+-define(ConfigFile, "priv/usage.conf").
 
--define(ConfigFile, "index.conf").
-
-run() -> dobi:build(
-	dobi:build_parts(filename:join(?ConfigDir, ?ConfigFile), ?ContentDir),
-	[{"$text", "This is usage example."}]
-).
+run() ->
+	{ok, Config} = file:consult(?ConfigFile),
+	dobi:build(dobi:build_parts(Config, ?ContentDir),
+		[{"$text", "This is usage example."}]).
 
 greeting() -> "Hello world!".
